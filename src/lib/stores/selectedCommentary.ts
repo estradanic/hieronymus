@@ -1,7 +1,5 @@
+import { commentaries, type Commentary } from "$lib/types/Bible";
 import { writable } from "svelte/store";
-
-export const commentaries = ["lapide", "origen", "chrysostom"] as const;
-export type Commentary = (typeof commentaries)[number];
 
 export function isCommentary(str: string | null): str is Commentary {
 	return !!str && commentaries.includes(str as any);

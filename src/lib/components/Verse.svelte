@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
 	import selectedVerse from "$lib/stores/selectedVerse";
+	import hoveredVerse from "$lib/stores/hoveredVerse";
 
 	/** @type {string} */
 	export let id;
-	let hovered = false;
 
 	onMount(() => {
 		if (window.location.hash.slice(1) === id) {
@@ -16,10 +16,10 @@
 
 <a
 	href="#{id}"
-	on:mouseenter={() => hovered = true}
-	on:mouseleave={() => hovered = false}
+	on:mouseenter={() => $hoveredVerse = id}
+	on:mouseleave={() => $hoveredVerse = undefined}
 	class="root"
-	class:hovered
+	class:hovered={$hoveredVerse === id}
 	class:selected={$selectedVerse === id}
 >
 	<sup style:color="blue">{id.split(":")[1]}</sup>

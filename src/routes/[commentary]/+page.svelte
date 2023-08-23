@@ -4,12 +4,11 @@
 
 	export let data;
 
-	/** @type {Record<string, string>} */
-	const verses = {
-		"Mt-1:1": "THE book of the generation of Jesus Christ, the son of David, the son of Abraham:",
-		"Mt-1:2": "Abraham begot Isaac. And Isaac begot Jacob. And Jacob begot Judas and his brethren.",
-		"Mt-1:3": "And Judas begot Phares and Zara of Thamar. And Phares begot Esron. And Esron begot Aram.",
-	};
+	const verses = /** @type {const} */ ({
+		"Matthew-1:1": "THE book of the generation of Jesus Christ, the son of David, the son of Abraham:",
+		"Matthew-1:2": "Abraham begot Isaac. And Isaac begot Jacob. And Jacob begot Judas and his brethren.",
+		"Matthew-1:3": "And Judas begot Phares and Zara of Thamar. And Phares begot Esron. And Esron begot Aram.",
+	});
 </script>
 
 <div class="content">
@@ -26,7 +25,7 @@
 			<h4>{data.commentary.name}</h4>
 			{#each Object.keys(data.commentary.verses) as id}
 				<Verse id={id}>
-					{data.commentary.verses[id]}
+					{@html data.commentary.verses[id]}
 				</Verse>
 			{/each}
 		</div>
