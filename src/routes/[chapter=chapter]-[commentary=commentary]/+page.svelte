@@ -7,7 +7,7 @@
 
 <div class="content">
 	<div class="panel">
-		<h4 class="title">{$page.params.verse.split(":").slice(0, 2).join(" ")}</h4>
+		<h4 class="title">{$page.params.chapter.split(":").slice(0, 2).join(" ").replace("_", " ")}</h4>
 		{#if !data.scripture}
 			<p>No scripture available for this verse.</p>
 		{:else}
@@ -18,10 +18,10 @@
 			{/each}
 		{/if}
 	</div>
-	{#if $page.params.verse}
+	{#if $page.params.chapter}
 		<div class="divider" />
 		<div class="panel">
-			<h4 style:text-transform="capitalize">{$page.params.commentaryName}</h4>
+			<h4 style:text-transform="capitalize">{$page.params.commentary}</h4>
 			{#if !data.commentary}
 				<p>No commentary available for this verse.</p>
 			{:else}

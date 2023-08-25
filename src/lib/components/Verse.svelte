@@ -9,13 +9,13 @@
 
 	function navigateToVerse() {
 		if (document.getSelection()?.type === "Range") return;
-		const route = `/${id}_${$page.params.commentaryName}`;
+		const route = `/${id}-${$page.params.commentary}`;
 		const otherType = type === "scripture" ? "commentary" : "scripture";
 		const hash = `#${otherType}-${id}`;
-		if ($page.url.pathname === route && id === $page.params.verse) {
+		if ($page.url.pathname === route && window.location.hash?.endsWith(id)) {
 			return;
 		}
-		if ($page.url.pathname === route && id !== $page.params.verse) {
+		if ($page.url.pathname === route && !window.location.hash?.endsWith(id)) {
 			document.getElementById(hash)?.scrollIntoView({behavior: "smooth"});
 			return;
 		}
@@ -39,7 +39,7 @@
 	on:mouseenter={() => ($hoveredVerse = id)}
 	on:mouseleave={() => ($hoveredVerse = undefined)}
 	class:hovered={$hoveredVerse === id}
-	class:selected={$page.params.verse === id}
+	class:selected={$page.url.hash?.endsWith(id)}
 	class="verse"
 >
 	{#if Number(id.split(":")[1]) > 1}
