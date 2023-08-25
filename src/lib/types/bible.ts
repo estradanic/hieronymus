@@ -74,7 +74,7 @@ export const books = [
 ] as const;
 
 export type Book = (typeof books)[number];
-export type Chapter = `${Book}-${number}`;
+export type Chapter = `${Book}:${number}`;
 export type Verse = `${Chapter}:${number}`;
 
 export const commentaries = ["lapide"] as const;

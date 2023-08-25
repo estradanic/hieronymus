@@ -1,0 +1,64 @@
+Arguments: 
+  /home/nic/.nvm/versions/node/v16.20.1/bin/node /usr/share/yarn/bin/yarn.js install
+
+PATH: 
+  /home/nic/.nvm/versions/node/v16.20.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.20.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/nic/.cache/yarn/v6/npm-ts-reset-0.0.1-4cc1ec7215349250a393d90ac0100574950ad51e-integrity/node_modules/ts-reset/.yarn-metadata.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+  	"name": "heironymus",
+  	"version": "0.0.1",
+  	"private": true,
+  	"scripts": {
+  		"dev": "vite dev",
+  		"build": "vite build",
+  		"preview": "vite preview",
+  		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+  		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+  		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+  		"format": "prettier --plugin-search-dir . --write ."
+  	},
+  	"devDependencies": {
+  		"@sveltejs/adapter-auto": "^2.0.0",
+  		"@sveltejs/kit": "^1.20.4",
+  		"@typescript-eslint/eslint-plugin": "^5.45.0",
+  		"@typescript-eslint/parser": "^5.45.0",
+  		"eslint": "^8.28.0",
+  		"eslint-config-prettier": "^8.5.0",
+  		"eslint-plugin-svelte": "^2.30.0",
+  		"prettier": "^2.8.0",
+  		"prettier-plugin-svelte": "^2.10.1",
+  		"svelte": "^4.0.5",
+  		"svelte-check": "^3.4.3",
+  		"tslib": "^2.4.1",
+  		"typescript": "^5.0.0",
+  		"vite": "^4.4.2"
+  	},
+  	"type": "module",
+  	"dependencies": {
+  		"ts-reset": "^0.0.1"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
