@@ -1,5 +1,5 @@
-import type {ParamMatcher} from "@sveltejs/kit";
-import {books} from "$lib/types/bible";
+import type { ParamMatcher } from "@sveltejs/kit";
+import { books } from "$lib/types/bible";
 
 export const match: ParamMatcher = (param) => {
 	const [book, chapter] = param.split(":");

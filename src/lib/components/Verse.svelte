@@ -9,17 +9,11 @@
 
 	function navigateToVerse() {
 		if (document.getSelection()?.type === "Range") return;
-		const route = `/${id}-${$page.params.commentary}`;
+		const chapter = $page.params.chapter;
+		const route = `/${chapter}-${$page.params.commentary}`;
 		const otherType = type === "scripture" ? "commentary" : "scripture";
-		const hash = `#${otherType}-${id}`;
-		if ($page.url.pathname === route && window.location.hash?.endsWith(id)) {
-			return;
-		}
-		if ($page.url.pathname === route && !window.location.hash?.endsWith(id)) {
-			document.getElementById(hash)?.scrollIntoView({behavior: "smooth"});
-			return;
-		}
-		const url = new URL(`${route}${hash}`, window.location.origin);
+		const hash = `${otherType}-${id}`;
+		const url = new URL(`${route}#${hash}`, window.location.origin);
 		goto(url);
 	}
 

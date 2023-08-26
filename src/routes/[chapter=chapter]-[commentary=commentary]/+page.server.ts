@@ -15,10 +15,14 @@ interface Return {
 	scripture?: Record<Verse, string>;
 }
 
-async function getScripture(book: Book, chapter: number, fetch: Fetch): Promise<Record<Verse, string>> {
+async function getScripture(
+	book: Book,
+	chapter: number,
+	fetch: Fetch
+): Promise<Record<Verse, string> | undefined> {
 	const response = await fetch(`/scripture/${book}/${chapter}.html`);
 	if (response.status !== 200) {
-		return {};
+		return undefined;
 	}
 	const htmlText = await response.text();
 	const lines = htmlText.split("<!---->");
@@ -30,10 +34,15 @@ async function getScripture(book: Book, chapter: number, fetch: Fetch): Promise<
 	return scripture;
 }
 
-async function getCommentary(commentary: Commentary, book: Book, chapter: number, fetch: Fetch): Promise<Record<Verse, string>> {
+async function getCommentary(
+	commentary: Commentary,
+	book: Book,
+	chapter: number,
+	fetch: Fetch
+): Promise<Record<Verse, string> | undefined> {
 	const response = await fetch(`/commentaries/${commentary}/${book}/${chapter}.html`);
 	if (response.status !== 200) {
-		return {};
+		return undefined;
 	}
 	const htmlText = await response.text();
 	const lines = htmlText.split("<!---->");
@@ -51,6 +60,6 @@ export async function load({ params: { commentary, chapter }, fetch }: Params): 
 
 	return {
 		commentary: await getCommentary(commentary, book, chapterNumber, fetch),
-		scripture: await getScripture(book, chapterNumber, fetch),
+		scripture: await getScripture(book, chapterNumber, fetch)
 	};
 }

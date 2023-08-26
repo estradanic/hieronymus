@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { page } from "$app/stores";
+	import type { Chapter, Commentary } from "$lib/types/bible";
+	import CommentarySelector from "$lib/components/CommentarySelector.svelte";
 	import Verse from "$lib/components/Verse.svelte";
 
 	export let data;
+	let commentary: Commentary;
+	let chapter: Chapter;
+
+	$: commentary = $page.params.commentary as Commentary;
+	$: chapter = $page.params.chapter as Chapter;
 </script>
 
 <div class="content">
 	<div class="panel">
-		<h4 class="title">{$page.params.chapter.split(":").slice(0, 2).join(" ").replace("_", " ")}</h4>
+		<h4 class="title">{chapter.split(":").slice(0, 2).join(" ").replace("_", " ")}</h4>
 		{#if !data.scripture}
 			<p>No scripture available for this verse.</p>
 		{:else}
@@ -18,21 +25,19 @@
 			{/each}
 		{/if}
 	</div>
-	{#if $page.params.chapter}
-		<div class="divider" />
-		<div class="panel">
-			<h4 style:text-transform="capitalize">{$page.params.commentary}</h4>
-			{#if !data.commentary}
-				<p>No commentary available for this verse.</p>
-			{:else}
-				{#each Object.keys(data.commentary) as id}
-					<Verse type="commentary" {id}>
-						{@html data.commentary[id]}
-					</Verse>
-				{/each}
-			{/if}
-		</div>
-	{/if}
+	<div class="divider" />
+	<div class="panel">
+		<CommentarySelector value={commentary} />
+		{#if !data.commentary}
+			<p>No commentary available for this verse.</p>
+		{:else}
+			{#each Object.keys(data.commentary) as id}
+				<Verse type="commentary" {id}>
+					{@html data.commentary[id]}
+				</Verse>
+			{/each}
+		{/if}
+	</div>
 </div>
 
 <style>
@@ -41,7 +46,6 @@
 		src: url(/bible.ttf);
 	}
 	.content :global(.incipit) {
-		font-family: bible;
 		font-size: 1.5rem;
 		color: firebrick;
 		font-weight: bold;
@@ -78,5 +82,8 @@
 	.title {
 		position: sticky;
 		top: 0;
+		width: 100%;
+		background-color: #f5f5f5;
+		padding-bottom: 1rem;
 	}
 </style>

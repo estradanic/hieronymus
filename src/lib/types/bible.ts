@@ -77,5 +77,5 @@ export type Book = (typeof books)[number];
 export type Chapter = `${Book}:${number}`;
 export type Verse = `${Chapter}:${number}`;
 
-export const commentaries = ["lapide"] as const;
+export const commentaries = ["lapide", "catena_aurea"] as const;
 export type Commentary = (typeof commentaries)[number];

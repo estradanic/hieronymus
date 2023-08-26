@@ -5,8 +5,11 @@
 
 <style>
 	:global(body) {
-		background-color: #F5F5F5;
+		background-color: #f5f5f5;
 		margin: 0.5rem;
+	}
+	:global(*) {
+		scroll-behavior: smooth;
 	}
 	@font-face {
 		font-family: heironymus;
@@ -16,6 +19,7 @@
 		padding: 0 2rem;
 		height: 6rem;
 		display: flex;
+		justify-content: space-between;
 	}
 	h1 {
 		margin: auto 0;
