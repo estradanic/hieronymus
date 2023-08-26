@@ -40,7 +40,7 @@
 	>
 		{#each commentaries as commentary}
 			<option value={commentary}>
-				{commentary.replace("_", " ")}
+				{commentary.replaceAll("_", " ")}
 			</option>
 		{/each}
 	</select>
@@ -55,11 +55,7 @@
 
 <style>
 	h4 {
-		position: sticky;
-		top: 0;
 		width: 100%;
-		background-color: #f5f5f5;
-		padding-bottom: 1rem;
 	}
 	select {
 		text-transform: capitalize;
@@ -75,9 +71,13 @@
 		border-bottom: 2px solid firebrick;
 		padding-right: 1.5rem;
 	}
+	option {
+		appearance: none;
+	}
 	.arrow {
 		transform: translateX(-1rem);
 		position: absolute;
 		color: firebrick;
+		cursor: pointer;
 	}
 </style>

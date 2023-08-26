@@ -1,5 +1,5 @@
 <header>
-	<h1>Heironymus</h1>
+	<h1><a href="/">Heironymus</a></h1>
 </header>
 <slot />
 
@@ -20,12 +20,16 @@
 		height: 6rem;
 		display: flex;
 		justify-content: space-between;
+  		box-shadow: 0px 6px 3px -3px firebrick;
 	}
 	h1 {
 		margin: auto 0;
+	}
+	a {
+		text-decoration: none;
+		appearance: none;
+		color: firebrick;
 		font-family: heironymus;
 		font-weight: normal;
-		color: firebrick;
-		border-bottom: 2px solid firebrick;
 	}
 </style>

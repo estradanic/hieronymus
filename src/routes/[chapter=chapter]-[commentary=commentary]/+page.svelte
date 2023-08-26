@@ -3,6 +3,7 @@
 	import type { Chapter, Commentary } from "$lib/types/bible";
 	import CommentarySelector from "$lib/components/CommentarySelector.svelte";
 	import Verse from "$lib/components/Verse.svelte";
+	import Layout from "../+layout.svelte";
 
 	export let data;
 	let commentary: Commentary;
@@ -13,30 +14,34 @@
 </script>
 
 <div class="content">
-	<div class="panel">
-		<h4 class="title">{chapter.split(":").slice(0, 2).join(" ").replace("_", " ")}</h4>
-		{#if !data.scripture}
-			<p>No scripture available for this verse.</p>
-		{:else}
-			{#each Object.keys(data.scripture) as id}
-				<Verse type="scripture" {id}>
-					{@html data.scripture[id]}
-				</Verse>
-			{/each}
-		{/if}
+	<div class="panel scripture">
+		<h4 class="title">{chapter.split(":").slice(0, 2).join(" ").replaceAll("_", " ")}</h4>
+		<div class="text">
+			{#if !data.scripture}
+				<span>No scripture available for this verse.</span>
+			{:else}
+				{#each Object.keys(data.scripture) as id}
+					<Verse type="scripture" {id}>
+						{@html data.scripture[id]}
+					</Verse>
+				{/each}
+			{/if}
+		</div>
 	</div>
 	<div class="divider" />
 	<div class="panel">
 		<CommentarySelector value={commentary} />
-		{#if !data.commentary}
-			<p>No commentary available for this verse.</p>
-		{:else}
-			{#each Object.keys(data.commentary) as id}
-				<Verse type="commentary" {id}>
-					{@html data.commentary[id]}
-				</Verse>
-			{/each}
-		{/if}
+		<div class="text">
+			{#if !data.commentary}
+				<span>No commentary available for this verse.</span>
+			{:else}
+				{#each Object.keys(data.commentary) as id}
+					<Verse type="commentary" {id}>
+						{@html data.commentary[id]}
+					</Verse>
+				{/each}
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -54,8 +59,8 @@
 		display: flex;
 		flex-direction: row;
 		font-size: 1.2em;
-		line-height: 1.5em;
-		padding: 4rem;
+		line-height: 2em;
+		padding: 2rem;
 		font-family: bible;
 		height: calc(100vh - 7rem);
 		box-sizing: border-box;
@@ -67,12 +72,23 @@
 		height: 100%;
 		flex-basis: 50%;
 		flex-shrink: 0;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+	.scripture {
+  		box-shadow: 5px 0px 5px -5px #AAA;
+	}
+	.text::-webkit-scrollbar {
+		display: none;
+	}
+	.text {
+		flex-basis: 100%;
+		width: 100%;
 		overflow-y: auto;
+		flex-shrink: 1;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
-	}
-	.panel::-webkit-scrollbar {
-		display: none;
 	}
 	.divider {
 		flex-basis: 2rem;
@@ -80,10 +96,7 @@
 		flex-grow: 0;
 	}
 	.title {
-		position: sticky;
-		top: 0;
 		width: 100%;
-		background-color: #f5f5f5;
-		padding-bottom: 1rem;
+		flex-shrink: 0;
 	}
 </style>

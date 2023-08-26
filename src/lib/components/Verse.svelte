@@ -36,9 +36,7 @@
 	class:selected={$page.url.hash?.endsWith(id)}
 	class="verse"
 >
-	{#if Number(id.split(":")[1]) > 1}
-		<sup>{id.split(":")[1]}</sup>
-	{/if}
+	<sup>{id.split(":")[2]}</sup>
 	<slot />
 </span>
 &nbsp;
