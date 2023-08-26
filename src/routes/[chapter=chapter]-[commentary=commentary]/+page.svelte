@@ -3,7 +3,6 @@
 	import type { Chapter, Commentary } from "$lib/types/bible";
 	import CommentarySelector from "$lib/components/CommentarySelector.svelte";
 	import Verse from "$lib/components/Verse.svelte";
-	import Layout from "../+layout.svelte";
 
 	export let data;
 	let commentary: Commentary;
