@@ -58,8 +58,7 @@
 			{/if}
 		</div>
 	</div>
-	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<div role="separator" class="divider" on:mousedown={startDrag} />
+	<div aria-hidden class="divider" on:mousedown={startDrag} />
 	<div class="panel commentary" bind:this={commentaryDiv}>
 		<CommentarySelector value={commentary} />
 		<div class="text">
@@ -126,7 +125,7 @@
 		flex-shrink: 0;
 		flex-grow: 0;
 		cursor: col-resize;
-		transition: opacity 1s;
+		transition: opacity 500ms;
 		background-color: firebrick;
 		opacity: 0;
 		border: 4px solid #f5f5f5;

@@ -26,12 +26,16 @@
 		}
 	}
 
+	$: if ($page.url.hash === `#${type}-${id}` && verse) {
+		verse.focus();
+	}
+
 	onMount(() => {
 		if ($page.url.hash?.endsWith(id)) {
 			setTimeout(() => {
 				const top = verse.getBoundingClientRect().top;
 				const parent = verse.parentElement!;
-				parent.scrollTo({
+				parent.scrollTo({			
 					top: top - parent.getBoundingClientRect().top,
 					behavior: "instant"
 				});
@@ -43,7 +47,7 @@
 <span
 	bind:this={verse}
 	id="{type}-{id}"
-	role="button"
+	role="link"
 	tabindex="0"
 	on:click={navigateToVerse}
 	on:keydown={handleKeyDown}
