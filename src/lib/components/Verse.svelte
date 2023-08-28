@@ -68,15 +68,15 @@
 	.verse :global(a) {
 		color: firebrick;
 	}
-	.selected {
-		text-decoration: underline;
-		text-decoration-color: yellow;
-		text-decoration-thickness: 3px;
-	}
 	.hovered {
 		text-decoration: underline;
 		text-decoration-thickness: 3px;
 		text-decoration-color: lightblue;
+	}
+	.selected {
+		text-decoration: underline;
+		text-decoration-color: yellow;
+		text-decoration-thickness: 3px;
 	}
 	sup {
 		color: firebrick;
