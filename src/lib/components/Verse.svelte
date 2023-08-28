@@ -33,9 +33,9 @@
 				const parent = verse.parentElement!;
 				parent.scrollTo({
 					top: top - parent.getBoundingClientRect().top,
-					behavior: "instant",
+					behavior: "instant"
 				});
-			})
+			});
 		}
 	});
 </script>

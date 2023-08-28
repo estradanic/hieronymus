@@ -14,12 +14,14 @@
 	let startX: number;
 	let startWidth: number;
 
-	const MIN_WIDTH = 300 as const;
+	const MIN_SCRIPTURE_WIDTH = 200 as const;
+	const MIN_COMMENTARY_WIDTH = 300 as const;
 	function drag(e: MouseEvent) {
 		e.preventDefault();
 		const diffX = e.pageX - startX;
 		const newWidth = startWidth + diffX;
-		if (newWidth < MIN_WIDTH || newWidth > contentDiv.offsetWidth - MIN_WIDTH) return;
+		if (newWidth < MIN_SCRIPTURE_WIDTH || newWidth > contentDiv.offsetWidth - MIN_COMMENTARY_WIDTH)
+			return;
 
 		scriptureDiv.style.flexBasis = `${newWidth}px`;
 		commentaryDiv.style.flexBasis = `calc(100% - ${newWidth}px)`;
@@ -106,7 +108,7 @@
 		flex-direction: column;
 	}
 	.scripture {
-  		box-shadow: 5px 0px 5px -5px #AAA;
+		box-shadow: 5px 0px 5px -5px #aaa;
 	}
 	.text::-webkit-scrollbar {
 		display: none;

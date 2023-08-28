@@ -20,7 +20,7 @@
 		height: 6rem;
 		display: flex;
 		justify-content: space-between;
-  		box-shadow: 0px 6px 3px -3px firebrick;
+		box-shadow: 0px 6px 3px -3px firebrick;
 	}
 	h1 {
 		margin: auto 0;
