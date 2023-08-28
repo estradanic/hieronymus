@@ -8,12 +8,14 @@
 	export let id: Verse;
 	export let type: "scripture" | "commentary";
 
-	function navigateToVerse(switchSides = true) {
+	let verse: HTMLSpanElement;
+
+	function navigateToVerse() {
 		if (document.getSelection()?.type === "Range") return;
 		const chapter = $page.params.chapter;
 		const route = `/${chapter}-${$page.params.commentary}`;
 		const otherType = type === "scripture" ? "commentary" : "scripture";
-		const hash = `${switchSides ? otherType : type}-${id}`;
+		const hash = `${otherType}-${id}`;
 		const url = new URL(`${route}#${hash}`, window.location.origin);
 		goto(url);
 	}
@@ -26,12 +28,20 @@
 
 	onMount(() => {
 		if ($page.url.hash?.endsWith(id)) {
-			navigateToVerse(false);
+			setTimeout(() => {
+				const top = verse.getBoundingClientRect().top;
+				const parent = verse.parentElement!;
+				parent.scrollTo({
+					top: top - parent.getBoundingClientRect().top,
+					behavior: "instant",
+				});
+			})
 		}
 	});
 </script>
 
 <span
+	bind:this={verse}
 	id="{type}-{id}"
 	role="button"
 	tabindex="0"
