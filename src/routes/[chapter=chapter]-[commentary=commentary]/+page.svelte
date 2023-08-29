@@ -45,6 +45,11 @@
 		commentaryDiv.style.flexBasis = `calc(100% - ${MIN_SCRIPTURE_WIDTH}px)`;
 	}
 
+	function snapCenter() {
+		scriptureDiv.style.flexBasis = `50%`;
+		commentaryDiv.style.flexBasis = `50%`;
+	}
+
 	function snapRight() {
 		scriptureDiv.style.flexBasis = `calc(100% - ${MIN_COMMENTARY_WIDTH}px)`;
 		commentaryDiv.style.flexBasis = `${MIN_COMMENTARY_WIDTH}px`;
@@ -71,6 +76,7 @@
 	</div>
 	<div aria-hidden class="divider" on:mousedown={startDrag}>
 		<div aria-hidden class="snap left" on:click={snapLeft}>&lt;</div>
+		<div aria-hidden class="snap center" on:click={snapCenter}>:::</div>
 		<div aria-hidden class="snap right" on:click={snapRight}>&gt;</div>
 	</div>
 	<div class="panel commentary" bind:this={commentaryDiv}>
@@ -116,9 +122,6 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.scripture {
-		box-shadow: 5px 0px 5px -5px #aaa;
-	}
 	.text::-webkit-scrollbar {
 		display: none;
 	}
@@ -129,6 +132,12 @@
 		flex-shrink: 1;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+	}
+	@media screen and (max-width: 800px) {
+		.divider {
+			visibility: hidden;
+			flex-basis: 0.5rem;
+		}
 	}
 	.divider {
 		flex-basis: 1rem;
@@ -157,6 +166,11 @@
 		right: 100%;
 		border-radius: 4px 0 0 4px;
 		border-right: 1px solid #f5f5f5;
+	}
+	.divider > .snap.center {
+		width: 1rem;	
+		padding: 1rem 0;
+		text-align: end;
 	}
 	.divider > .snap.right {
 		left: 100%;
