@@ -40,6 +40,16 @@
 		document.addEventListener("mouseup", stopDrag);
 	}
 
+	function snapLeft() {
+		scriptureDiv.style.flexBasis = `${MIN_SCRIPTURE_WIDTH}px`;
+		commentaryDiv.style.flexBasis = `calc(100% - ${MIN_SCRIPTURE_WIDTH}px)`;
+	}
+
+	function snapRight() {
+		scriptureDiv.style.flexBasis = `calc(100% - ${MIN_COMMENTARY_WIDTH}px)`;
+		commentaryDiv.style.flexBasis = `${MIN_COMMENTARY_WIDTH}px`;
+	}
+
 	$: commentary = $page.params.commentary as Commentary;
 	$: chapter = $page.params.chapter as Chapter;
 </script>
@@ -59,7 +69,10 @@
 			{/if}
 		</div>
 	</div>
-	<div aria-hidden class="divider" on:mousedown={startDrag} />
+	<div aria-hidden class="divider" on:mousedown={startDrag}>
+		<div aria-hidden class="snap left" on:click={snapLeft}>&lt;</div>
+		<div aria-hidden class="snap right" on:click={snapRight}>&gt;</div>
+	</div>
 	<div class="panel commentary" bind:this={commentaryDiv}>
 		<CommentarySelect value={commentary} />
 		<div class="text">
@@ -127,6 +140,28 @@
 		opacity: 0;
 		border: 4px solid #f5f5f5;
 		border-radius: 8px;
+		position: relative;
+	}
+	.divider > .snap {
+		position: absolute;
+		color: #f5f5f5;
+		background-color: firebrick;
+		cursor: pointer;
+		padding: 1rem;
+		top: 50%;
+	}
+	.divider > .snap:hover {
+		opacity: 0.9;
+	}
+	.divider > .snap.left {
+		right: 100%;
+		border-radius: 4px 0 0 4px;
+		border-right: 1px solid #f5f5f5;
+	}
+	.divider > .snap.right {
+		left: 100%;
+		border-radius: 0 4px 4px 0;
+		border-left: 1px solid #f5f5f5;
 	}
 	.divider:hover {
 		opacity: 1;

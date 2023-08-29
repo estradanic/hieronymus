@@ -82,7 +82,7 @@
 	}
 	.item:hover, .item:focus {
 		background-color: firebrick;
-		color: white;
+		color: #f5f5f5;
 	}
 	.arrow {
 		color: firebrick;
