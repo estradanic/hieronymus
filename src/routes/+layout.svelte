@@ -1,3 +1,10 @@
+<script>
+	import {dev} from "$app/environment";
+	import {inject} from "@vercel/analytics";
+
+	inject({mode: dev ? "development": "production"});
+</script>
+
 <header>
 	<h1><a href="/">Heironymus</a></h1>
 </header>
