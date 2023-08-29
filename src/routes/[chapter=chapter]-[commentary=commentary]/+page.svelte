@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import type { Chapter, Commentary } from "$lib/types/bible";
-	import CommentarySelector from "$lib/components/CommentarySelector.svelte";
+	import type {Return} from "./+page.server";
+	import CommentarySelect from "$lib/components/CommentarySelect.svelte";
 	import Verse from "$lib/components/Verse.svelte";
 
-	export let data;
+	export let data: Return;
 
 	let commentary: Commentary;
 	let chapter: Chapter;
@@ -60,7 +61,7 @@
 	</div>
 	<div aria-hidden class="divider" on:mousedown={startDrag} />
 	<div class="panel commentary" bind:this={commentaryDiv}>
-		<CommentarySelector value={commentary} />
+		<CommentarySelect value={commentary} />
 		<div class="text">
 			{#if !data.commentary}
 				<span>No commentary available for this verse.</span>

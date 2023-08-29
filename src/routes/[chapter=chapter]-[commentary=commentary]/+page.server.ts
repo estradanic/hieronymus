@@ -10,7 +10,7 @@ interface Params {
 	fetch: Fetch;
 }
 
-interface Return {
+export interface Return {
 	commentary?: Record<Verse, string>;
 	scripture?: Record<Verse, string>;
 }
