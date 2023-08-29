@@ -5,7 +5,6 @@
 	inject({mode: dev ? "development": "production"});
 </script>
 
-<title>Heironymus</title>
 <header>
 	<h1><a href="/">Heironymus</a></h1>
 </header>

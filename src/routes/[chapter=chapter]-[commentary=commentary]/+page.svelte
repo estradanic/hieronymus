@@ -14,6 +14,7 @@
 	let contentDiv: HTMLDivElement;
 	let startX: number;
 	let startWidth: number;
+	let abbreviation: string;
 
 	const MIN_SCRIPTURE_WIDTH = 200 as const;
 	const MIN_COMMENTARY_WIDTH = 300 as const;
@@ -57,8 +58,10 @@
 
 	$: commentary = $page.params.commentary as Commentary;
 	$: chapter = $page.params.chapter as Chapter;
+	$: abbreviation = $page.url.hash?.split("-")[1] ?? $page.url.pathname.split("-")[0].replace("/", "");
 </script>
 
+<title>{abbreviation}</title>
 <div class="content" bind:this={contentDiv}>
 	<div class="panel scripture" bind:this={scriptureDiv}>
 		<h4 class="title">{chapter.split(":").slice(0, 2).join(" ").replaceAll("_", " ")}</h4>
@@ -160,7 +163,7 @@
 		top: 50%;
 	}
 	.divider > .snap:hover {
-		opacity: 0.9;
+		background-color: rgb(148, 4, 4);
 	}
 	.divider > .snap.left {
 		right: 100%;
