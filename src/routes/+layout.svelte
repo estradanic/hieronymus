@@ -23,6 +23,10 @@
 		font-family: heironymus;
 		src: url(/heironymus.ttf);
 	}
+	@font-face {
+		font-family: bible;
+		src: url(/bible.ttf);
+	}
 	header {
 		padding: 0 2rem;
 		height: 6rem;

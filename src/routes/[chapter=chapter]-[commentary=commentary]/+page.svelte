@@ -77,10 +77,6 @@
 </div>
 
 <style>
-	@font-face {
-		font-family: bible;
-		src: url(/bible.ttf);
-	}
 	.content :global(.incipit) {
 		font-size: 1.5rem;
 		color: firebrick;
