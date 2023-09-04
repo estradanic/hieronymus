@@ -6,7 +6,7 @@
 </script>
 
 <header>
-	<h1><a href="/">Heironymus</a></h1>
+	<h1><a href="/">Hieronymus</a></h1>
 </header>
 <slot />
 
@@ -19,8 +19,8 @@
 		scroll-behavior: smooth;
 	}
 	@font-face {
-		font-family: heironymus;
-		src: url(/heironymus.ttf);
+		font-family: hieronymus;
+		src: url(/hieronymus.ttf);
 	}
 	@font-face {
 		font-family: bible;
@@ -40,7 +40,7 @@
 		text-decoration: none;
 		appearance: none;
 		color: firebrick;
-		font-family: heironymus;
+		font-family: hieronymus;
 		font-weight: normal;
 	}
 </style>

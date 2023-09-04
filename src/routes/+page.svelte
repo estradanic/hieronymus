@@ -2,7 +2,7 @@
 	import { books } from "$lib/types/bible";
 </script>
 
-<title>Heironymus</title>
+<title>Hieronymus</title>
 <div class="books">
 	{#each books as book}
 		<a class="book" href="/{book}:1-lapide">{book.replaceAll("_", " ")}</a>
